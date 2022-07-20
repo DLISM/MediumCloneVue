@@ -10,13 +10,13 @@
         VALIDATION ERRORS
         <form @submit.prevent="onSubmit">
           <fieldset class="form-group">
-            <input type="text" class="form-control form-control-lg" placeholder="User name">
+            <input type="text" class="form-control form-control-lg" placeholder="User name" v-model="username">
           </fieldset>
           <fieldset class="form-group">
-            <input type="text" class="form-control form-control-lg" placeholder="Email">
+            <input type="text" class="form-control form-control-lg" placeholder="Email" v-model="email">
           </fieldset>
           <fieldset class="form-group">
-            <input type="password" class="form-control form-control-lg" placeholder="Password">
+            <input type="password" class="form-control form-control-lg" placeholder="Password" v-model="password">
           </fieldset>
           <button class="btn btn-lg btn-primary pull-xs-right" :disabled="isSubmitting">Sing Up</button>
         </form>
@@ -31,6 +31,13 @@
 <script>
 export default {
   name: "AppRegister",
+  data(){
+    return{
+      email:'',
+      password:'',
+      username:''
+    }
+  },
   computed:{
     isSubmitting(){
       return this.$store.state.auth.isSubmitting
@@ -39,9 +46,13 @@ export default {
   methods:{
     onSubmit(){
       this.$store.dispatch('register',
-          {username: "ali001002006", email: "ali001002006@mail.ru", password: "12345678"}
-      ).then(user =>
-        console.log('successfully register user', user)
+          {
+            username: this.username,
+            email: this.email,
+            password: this.password
+          }
+      ).then(
+        this.$router.push({name:'home'})
       )
     }
   }
