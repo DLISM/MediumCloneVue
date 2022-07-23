@@ -1,6 +1,19 @@
 <template>
   <div>
-    Vue Medium
+    <app-topbar/>
     <router-view/>
   </div>
 </template>
+
+<script>
+import AppTopbar from '@/components/Topbar.vue'
+export default {
+  name:'App',
+  components:{
+    AppTopbar
+  }
+
+
+}
+
+</script>
