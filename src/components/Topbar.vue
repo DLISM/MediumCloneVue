@@ -14,30 +14,29 @@
 
         <template v-if="isLoggedIn">
           <li class="nav-item">
-            <router-link :to="{name:'createArticle'}">
+            <router-link :to="{name:'home'}">
               <i class="ion-compose"></i> &nbsp;
               New Article
             </router-link>
           </li>
 
           <li class="nav-item">
-            <router-link :to="{name:'setting'}">
+            <router-link :to="{name:'home'}">
               <i class="ion-gear-a"></i> &nbsp;
               Settings
             </router-link>
           </li>
 
           <li class="nav-item">
-            <router-link :to="{name:'userProfile', params:{slug:currentUser.username}}">
+            <router-link :to="{name:'home', params:{slug:currentUser.username}}">
               <img class="user-pic" :src="currentUser.image" />
-              &nbsp;
-              {{currentUser.user}}
+              {{currentUser.username}}
             </router-link>
           </li>
 
         </template>
 
-        <template v-if="!isLoggedIn">
+        <template v-if="isAnonymous">
 
           <li class="nav-item">
             <router-link :to="{name:'login'}" active-class="active">
@@ -59,15 +58,26 @@
 </template>
 
 <script>
+import {gettersTypes} from '@/store/modules/auth'
 import {mapState} from 'vuex'
 
 export default {
   name: "AppTopbar",
   computed:{
     ...mapState({
-      currentUser: state => state.auth.currentUser,
-      isLoggedIn: state => state.auth.isLoggedIn
-    })
+
+      // currentUser: state => state.auth.currentUser,
+      // isLoggedIn: state => state.auth.isLoggedIn
+    }),
+    currentUser(){
+      return this.$store.getters[gettersTypes.currentUser]
+    },
+    isLoggedIn(){
+      return this.$store.getters[gettersTypes.isLoggedIn]
+    },
+    isAnonymous(){
+      return this.$store.getters[gettersTypes.isAnonymous]
+    }
   }
 }
 </script>
