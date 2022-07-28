@@ -14,21 +14,21 @@
 
         <template v-if="isLoggedIn">
           <li class="nav-item">
-            <router-link :to="{name:'globalFeed'}">
+            <router-link :to="{name:'createArticle',}">
               <i class="ion-compose"></i> &nbsp;
               New Article
             </router-link>
           </li>
 
           <li class="nav-item">
-            <router-link :to="{name:'globalFeed'}">
+            <router-link :to="{name:'settings'}">
               <i class="ion-gear-a"></i> &nbsp;
               Settings
             </router-link>
           </li>
 
           <li class="nav-item">
-            <router-link :to="{name:'globalFeed', params:{slug:currentUser.username}}">
+            <router-link :to="{name:'userProfile', params:{slug:currentUser.username}}">
               <img class="user-pic" :src="currentUser.image" />
               {{currentUser.username}}
             </router-link>
