@@ -1,6 +1,8 @@
 <template>
 <div class="home-page">
-BANNER
+
+  <app-banner/>
+
   <div class="container page">
     <div class="row">
       <div class="col-md-9">
@@ -17,11 +19,13 @@ BANNER
 <script>
 import AppFeed from '@/components/Feed.vue'
 import AppPopularTags from '@/components/Populartags.vue'
+import AppBanner from '@/components/Banner.vue'
 export default {
   name: "AppGlobalFeed",
   components:{
     AppFeed,
-    AppPopularTags
+    AppPopularTags,
+    AppBanner
   },
   data(){
     return{
