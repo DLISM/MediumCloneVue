@@ -6,6 +6,7 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-9">
+        <app-feed-toggler/>
         <app-feed :api-url="apiUrl"/>
       </div>
       <div class="col-md-3">
@@ -20,12 +21,14 @@
 import AppFeed from '@/components/Feed.vue'
 import AppPopularTags from '@/components/Populartags.vue'
 import AppBanner from '@/components/Banner.vue'
+import AppFeedToggler from '@/components/FeedToggler.vue'
 export default {
   name: "AppYourFeed",
   components:{
     AppFeed,
     AppPopularTags,
-    AppBanner
+    AppBanner,
+    AppFeedToggler
   },
   data(){
     return{

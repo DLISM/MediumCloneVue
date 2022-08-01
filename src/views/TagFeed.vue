@@ -6,6 +6,7 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-9">
+        <app-feed-toggler :tag-name="tagName"/>
         <app-feed :api-url="apiUrl"/>
       </div>
       <div class="col-md-3">
@@ -20,17 +21,23 @@
 import AppFeed from '@/components/Feed.vue'
 import AppPopularTags from '@/components/Populartags.vue'
 import AppBanner from '@/components/Banner.vue'
+import AppFeedToggler from '@/components/FeedToggler.vue'
+
 export default {
   name: "AppTagFeed",
   components:{
     AppFeed,
     AppPopularTags,
-    AppBanner
+    AppBanner,
+    AppFeedToggler
   },
  computed:{
+    tagName(){
+      return this.$route.params.slug
+    },
     apiUrl(){
-      const tagName= this.$route.params.slug
-      return `/articles?tag=${tagName}`
+
+      return `/articles?tag=${this.tagName}`
     }
  }
 }
