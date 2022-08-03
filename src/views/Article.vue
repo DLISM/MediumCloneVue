@@ -37,7 +37,7 @@
         <div>
           <p>{{article.body}}</p>
         </div>
-        TAGLIST
+        <app-tag-list :tags="article.tagList"/>
       </div>
     </div>
   </div>
@@ -50,10 +50,14 @@ import {actionTypes as articleActionTypes} from '@/store/modules/article'
 import {mapState, mapGetters} from 'vuex'
 import AppErrorMessage from "@/components/ErrorMessage";
 import {gettersTypes as authGetterTypes} from '@/store/modules/auth'
+import AppTagList from '@/components/TagList'
 
 export default {
   name: "AppArticle",
-  components: {AppErrorMessage},
+  components: {
+    AppErrorMessage,
+    AppTagList
+  },
   computed:{
     ...mapState({
       isLoading:state => state.article.isLoading,
