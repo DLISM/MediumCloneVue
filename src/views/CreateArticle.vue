@@ -2,7 +2,7 @@
     <app-article-form
     :initial-values="initialValues"
     :errors="validationErrors"
-    :is-Submiting="isSubmitting"
+    :isSubmitting="isSubmitting"
     @articleSumit="onSubmit"
     />
 </template>

@@ -36,9 +36,11 @@ const actions={
             context.commit(mutationTypes.createArticleStart)
 
             articleApi.createArticle(articleInput).then(article=>{
+                console.log(article)
                 context.commit(mutationTypes.createArticleSuccess, article)
                 resolve(article)
             }).catch(result=>{
+                console.log(result)
                 context.commit(mutationTypes.createArticleFailure, result.response.data.errors)
             })
         })
