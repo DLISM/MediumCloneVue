@@ -9,11 +9,52 @@
           <form @submit.prevent="onSubmit">
             <fieldset>
               <fieldset class="form-group">
-                <input type="text" class="form-control form-control-lg" v-model="form.image" placeholder="URL">
+                <input type="text"
+                       class="form-control form-control-lg"
+                       v-model="form.image"
+                       placeholder="URL of profile picture">
               </fieldset>
+
+              <fieldset class="form-group">
+                <input type="text"
+                       class="form-control form-control-lg"
+                       v-model="form.username"
+                       placeholder="Username">
+              </fieldset>
+
+              <fieldset class="form-group">
+                <textarea
+                       class="form-control form-control-lg"
+                       v-model="form.bio"
+                       placeholder="Bio">
+                </textarea>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <input type="text"
+                       class="form-control form-control-lg"
+                       v-model="form.email"
+                       placeholder="Email">
+              </fieldset>
+
+            <fieldset class="form-group">
+              <input type="password"
+                     class="form-control form-control-lg"
+                     v-model="form.password"
+                     placeholder="Password">
+            </fieldset>
+
+            <button type="submit" class="btn btn-lg btn-primary pull-xs-right" :disabled="isSubmitting">
+              Update settings
+            </button>
 
             </fieldset>
           </form>
+
+          <hr/>
+          <button class="btn btn-outline-danger" @click="logout">
+            Or click here to logout
+          </button>
         </div>
       </div>
     </div>
@@ -22,8 +63,9 @@
 
 <script>
 import {mapState, mapGetters} from 'vuex'
-import {gettersTypes as authGettersType} from '@/store/modules/auth'
+import {gettersTypes as authGettersType, actionsTypes as authActionTypes, actionsTypes} from '@/store/modules/auth'
 import AppValidationErrors from '@/components/ValidationErrors.vue'
+import globalFeed from "@/views/GlobalFeed";
 
 export default {
   name: "AppSettings",
@@ -50,7 +92,12 @@ export default {
   },
   methods:{
     onSubmit(){
-      console.log('submit form')
+      this.$store.dispatch(actionsTypes.updateCurrentUser, {currentUserInputs: this.form})
+    },
+    logout(){
+      this.$store.dispatch(actionsTypes.logout).then(()=>{
+        this.$router.push({name:'globalFeed'})
+      })
     }
   }
 }
