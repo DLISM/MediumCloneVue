@@ -7,6 +7,7 @@ import Login from '@/views/Login'
 import Article from '@/views/Article'
 import CreateArticle from '@/views/CreateArticle.vue'
 import EditArticle from '@/views/EditArticle.vue'
+import Setting from '@/views/Settings.vue'
 
 const routes = [
   {
@@ -52,7 +53,7 @@ const routes = [
   {
     path: '/settings',
     name: 'settings',
-    component: GlobalFeed
+    component: Setting
   },
   {
     path: '/profiles/:slug',
