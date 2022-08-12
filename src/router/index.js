@@ -8,6 +8,7 @@ import Article from '@/views/Article'
 import CreateArticle from '@/views/CreateArticle.vue'
 import EditArticle from '@/views/EditArticle.vue'
 import Setting from '@/views/Settings.vue'
+import userProfile from '@/views/userProfile.vue'
 
 const routes = [
   {
@@ -58,12 +59,12 @@ const routes = [
   {
     path: '/profiles/:slug',
     name: 'userProfile',
-    component: GlobalFeed
+    component: userProfile
   },
   {
     path: '/profiles/:slug/favorites',
     name: 'userProfileFavorites',
-    component: GlobalFeed
+    component: userProfile
   }
 ]
 

@@ -177,7 +177,7 @@ const actions ={
     },
 
     [actionsTypes.logout](context){
-        return new Promise(resolve => {
+        return new Promise(() => {
             setItem('accessToken', '')
             context.commit(mutationTypes.logout)
         })
